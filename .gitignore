@@ -1,0 +1,39 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+/.idea
+
+# Keystore
+*.jks
+
+# TFLite / large models (optional – include only if required)
+*.tflite
+
+# APK files
+*.apk
+/app/release/
+
+# APKs & release builds
+*.apk
+/app/release/
+
+# Keystore
+*.jks
+
+# Android
+/build
+/local.properties
+.gradle
