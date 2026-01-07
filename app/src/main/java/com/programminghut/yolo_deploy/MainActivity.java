@@ -71,6 +71,14 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.imageView);
+        manualCropButton = findViewById(R.id.manualCropButton);
+
+        if (!image_uri.equals(""))
+        {
+            bitmap = getBitmapFromCache();
+            imageView.setImageBitmap(bitmap);
+            manualCropButton.setVisibility(View.VISIBLE);
+        }
 
         Button classifyButton = findViewById(R.id.classifyButton);
         classifyButton.setOnClickListener(new View.OnClickListener()
@@ -88,14 +96,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        if (!image_uri.equals(""))
-        {
-            bitmap = getBitmapFromCache();
-            imageView.setImageBitmap(bitmap);
-            manualCropButton.setVisibility(View.VISIBLE);
-        }
-
-        manualCropButton = findViewById(R.id.manualCropButton);
         manualCropButton.setOnClickListener(v -> {
             if (bitmap == null) {
                 Toast.makeText(this, "Upload an Image first!", Toast.LENGTH_SHORT).show();
@@ -219,8 +219,8 @@ public class MainActivity extends AppCompatActivity
             return;
         }
 
-        DenseNet121Classifier classifierDenseNet = null;
-        ResNet50Classifier classifierResNet = null;
+//        DenseNet121Classifier classifierDenseNet = null;
+//        ResNet50Classifier classifierResNet = null;
 
         try
         {
