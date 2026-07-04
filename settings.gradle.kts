@@ -1,4 +1,4 @@
-pluginManagement{
+pluginManagement {
     repositories {
         google()
         mavenCentral()
@@ -11,6 +11,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url = uri("https://jitpack.io") }
+        // Added Sonatype snapshots for TFLite nightly builds to support latest opcodes (v12)
+        maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
     }
 }
 

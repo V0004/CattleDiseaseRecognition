@@ -1,74 +1,37 @@
 package com.programminghut.yolo_deploy;
 
 import android.graphics.RectF;
+import androidx.annotation.NonNull;
 
+/**
+ * A standard class to represent a detection or classification result.
+ */
 public class Recognition {
-
-    private Integer labelId;
-    private String labelName;
-    private Float labelScore;
-    private Float confidence;
+    private final int id;
+    private String label;
+    private final float confidence;
     private RectF location;
 
-    public Recognition(final int labelId, final String labelName, final Float labelScore, final Float confidence, final RectF location)
-    {
-        this.labelId = labelId;
-        this.labelScore = labelScore;
-        this.labelName = labelName;
+    public Recognition(int id, String label, float confidence) {
+        this(id, label, confidence, null);
+    }
+
+    public Recognition(int id, String label, float confidence, RectF location) {
+        this.id = id;
+        this.label = label;
         this.confidence = confidence;
         this.location = location;
     }
 
-    public Recognition(int labelId, String labelName, float confidence)
-    {
-        this(labelId, labelName, confidence, confidence, null);  // Calls main constructor
-    }
+    public int getId() { return id; }
+    public String getLabel() { return label; }
+    public void setLabel(String label) { this.label = label; }
+    public float getConfidence() { return confidence; }
+    public RectF getLocation() { return location == null ? null : new RectF(location); }
 
-    public Integer getLabelId() {
-        return labelId;
-    }
-
-    public String getLabelName() {
-        return labelName;
-    }
-
-    public float getConfidence() {
-        return confidence;
-    }
-
-    public RectF getLocation() {
-        return new RectF(location);
-    }
-
-    public void setLabelName(String labelName) {
-        this.labelName = labelName;
-    }
-
-
+    @NonNull
     @Override
-    public String toString()
-    {
-        String resultString = "";
-
-        resultString += labelId + " ";
-
-        if (labelName != null) {
-            resultString += labelName + " ";
-        }
-
-        if (confidence != null) {
-            resultString += String.format("(%.1f%%) ", confidence * 100.0f);
-        }
-
-        if (location != null) {
-            resultString += location + " ";
-        }
-
-        return resultString.trim();
-    }
-
-    public String getLabel() {
-        return labelName;
+    public String toString() {
+        return String.format("%s (%.1f%%)", label, confidence * 100.0f);
     }
 }
-

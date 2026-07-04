@@ -19,7 +19,7 @@ public class ManualCropHelper {
     public static void startManualCrop(Activity activity, Bitmap bitmap) {
 
         if (bitmap == null) {
-            Toast.makeText(activity, "Bitmap is null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Bitmap is null / बिटमैप खाली है", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -33,7 +33,7 @@ public class ManualCropHelper {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(activity, "Failed to prepare image for cropping", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Failed to prepare image for cropping / क्रॉपिंग के लिए छवि तैयार करने में विफल", Toast.LENGTH_SHORT).show();
             return;
         }
 

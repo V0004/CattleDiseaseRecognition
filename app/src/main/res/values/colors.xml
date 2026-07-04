@@ -2,12 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="green">#88E788</color>
+    <color name="green_primary">#2D6A4F</color>
+    <color name="green_light">#D8F3DC</color>
+    <color name="green_medium">#74C69D</color>
     <color name="red">#FF0000</color>
-    <color name="darkblue">#00134d</color>
-    <color name="purple">#301934</color>">
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-
+    <color name="dark_slate">#1A202C</color>
+    <color name="purple">#301934</color>
+    <color name="colorPrimary">#2D6A4F</color>
+    <color name="colorPrimaryDark">#1B4332</color>
+    <color name="colorAccent">#95D5B2</color>
+    
+    <color name="quote_card_bg">#CCFFFFFF</color>
 </resources>

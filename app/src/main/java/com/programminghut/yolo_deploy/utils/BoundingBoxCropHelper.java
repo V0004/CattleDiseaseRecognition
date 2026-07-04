@@ -29,16 +29,19 @@ public class BoundingBoxCropHelper {
         ArrayList<Recognition> recognitions = detector.detect(bitmap);
 
         for (Recognition recognition : recognitions) {
-
+            // Updated to use getLabel() instead of getLabelName() to match refactored Recognition class
             if (recognition.getConfidence() > 0.4f &&
-                    recognition.getLabelName().equalsIgnoreCase("cow")) {
+                    "cow".equalsIgnoreCase(recognition.getLabel())) {
 
                 RectF location = recognition.getLocation();
+                if (location == null) continue;
 
                 int left = (int) Math.max(location.left, 0);
                 int top = (int) Math.max(location.top, 0);
                 int right = (int) Math.min(location.right, bitmap.getWidth());
                 int bottom = (int) Math.min(location.bottom, bitmap.getHeight());
+
+                if (right <= left || bottom <= top) continue;
 
                 Bitmap croppedBitmap = Bitmap.createBitmap(
                         bitmap,
