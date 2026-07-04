@@ -4,104 +4,163 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
-    tools:context=".MainActivity">
+    android:background="@color/green_light"
+    tools:context=".WelcomeActivity">
 
-    <!-- Quote TextView -->
-    <TextView
-        android:id="@+id/textViewQuote"
+    <!-- Header Section with Controls -->
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/languageToggleGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="“Healthy animals, healthy world”"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        android:textStyle="italic"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:checkedButton="@id/btnEnglish"
+        app:singleSelection="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- Quote Source TextView -->
-    <TextView
-        android:id="@+id/textViewQuoteSource"
+        <Button
+            android:id="@+id/btnEnglish"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EN"
+            android:textColor="@color/green_primary"
+            app:strokeColor="@color/green_primary" />
+
+        <Button
+            android:id="@+id/btnHindi"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HI"
+            android:textColor="@color/green_primary"
+            app:strokeColor="@color/green_primary" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAudio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="-World Organization for Animal Health"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:alpha="0.8"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_speaker"
+        app:backgroundTint="@color/green_primary"
+        app:tint="@android:color/white"
+        app:elevation="4dp"
+        app:fabSize="mini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Recite page content" />
+
+    <!-- Quote Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardQuote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="24dp"
+        app:cardBackgroundColor="@color/quote_card_bg"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewQuote" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- Cow Icon (replace with your drawable) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-    <!-- App Title TextView -->
+            <TextView
+                android:id="@+id/textViewQuote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quote"
+                android:textColor="@color/green_primary"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textStyle="italic" />
 
+            <TextView
+                android:id="@+id/textViewQuoteSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/quote_source"
+                android:textColor="@color/green_primary"
+                android:textSize="13sp"
+                android:alpha="0.8"
+                android:gravity="center" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Main Visual Section -->
     <ImageView
         android:id="@+id/imageViewCow"
-        android:layout_width="242dp"
-        android:layout_height="210dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="280dp"
+        android:layout_height="240dp"
         android:contentDescription="Cattle Icon"
         android:src="@drawable/cowlogo2"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewQuoteSource" />
-
-    <!-- Get Started Button -->
+        app:layout_constraintTop_toBottomOf="@id/cardQuote"
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/textViewTitle"
-        android:layout_width="248dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Cattle Disease\nDetection"
-        android:textColor="@android:color/white"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewCow" />
-
-    <Button
-        android:id="@+id/btn_get_started"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="48dp"
-        android:backgroundTint="#1A202C"
-        android:padding="16dp"
-        android:text="GET STARTED"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:cornerRadius="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="@string/welcome_title"
+        android:textColor="@color/green_primary"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_get_started"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/knowmore"
-        android:layout_width="292dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="48dp"
-        android:backgroundTint="#1A202C"
-        android:padding="16dp"
-        android:text="HOW TO USE"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:cornerRadius="25dp"
+    <!-- Action Section -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_get_started"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/get_started"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/green_primary"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/knowmore"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_get_started" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/knowmore"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/how_to_use"
+        android:textColor="@color/green_primary"
+        android:textSize="16sp"
+        app:cornerRadius="32dp"
+        app:strokeColor="@color/green_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
