@@ -1,1 +1,2 @@
-# yolo_android
+# Machine Learning and App Development: Cattle Disease Detection
+This is the Android application for the Cattle Disease Detection project. The app allows farmers, veterinarians, and users to quickly detect cattle diseases by simply capturing an image using the phone’s camera or uploading an existing image from the gallery. The image is then analyzed by our trained deep learning model to predict possible diseases.
