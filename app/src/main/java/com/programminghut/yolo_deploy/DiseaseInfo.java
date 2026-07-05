@@ -1,8 +1,11 @@
 package com.programminghut.yolo_deploy;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.programminghut.yolo_deploy.utils.TTSManager;
@@ -63,6 +66,7 @@ public class DiseaseInfo extends AppCompatActivity {
         infoTextView.setText(precautionsDisplay.toString());
 
         setupAudioButton();
+        setupMapButton();
         setupNavigation();
     }
 
@@ -72,6 +76,29 @@ public class DiseaseInfo extends AppCompatActivity {
             fabAudio.setOnClickListener(v -> {
                 String content = infoTextView.getText().toString();
                 ttsManager.speak(content);
+            });
+        }
+    }
+
+    private void setupMapButton() {
+        FloatingActionButton fabMap = findViewById(R.id.fabMap);
+        if (fabMap != null) {
+            fabMap.setOnClickListener(v -> {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=cow+veterinary+hospital");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                try {
+                    startActivity(mapIntent);
+                } catch (Exception e) {
+                    // Fallback to web browser maps search if Google Maps app is not available
+                    Uri webUri = Uri.parse("https://www.google.com/maps/search/?api=1&query=cow+veterinary+hospital");
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW, webUri);
+                    try {
+                        startActivity(webIntent);
+                    } catch (Exception ex) {
+                        Toast.makeText(this, "Maps app or browser not available", Toast.LENGTH_SHORT).show();
+                    }
+                }
             });
         }
     }
